@@ -54,7 +54,7 @@ if base_dict['data'] != 'None':
     user_tel = base_dict['telephone']
     user_back_time = base_dict['back_time']
 #mixed
-post_format = {'user_id':uu_id,'id_type':'1','identity_code':real_id,'address':user_real_addr,'telephone':user_tel,'user_back_time':user_back_time,'go_where':'None','contact_type':'1','es':'1','health_status':'2','is_diagnosis':'','is_fever':'0','temperature':'36','is_cough':'0','isolate':'0','isolate_type':'','isolate_time':'','remark':''}
+post_format = {'user_id':uu_id,'id_type':'1','identity_code':real_id,'address':user_real_addr,'telephone':user_tel,'back_time':user_back_time,'go_where':'None','contact_type':'1','es':'1','health_status':'2','is_diagnosis':'','is_fever':'0','temperature':'36','is_cough':'0','isolate':'0','isolate_type':'','isolate_time':'','remark':''}
 #Finally post out
 result = s.post(report_p,data=post_format).json()
 print(result)

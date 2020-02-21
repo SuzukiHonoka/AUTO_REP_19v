@@ -2,6 +2,7 @@
 print('Hi guys,\nwelcome to use this py based program!\nThis program is made by Starx and written in py3 format.\nPlease notice this program is used for test only,\nDO NOT USE IT FOR UNUSUAL PURPOSE.\nPLEASE USE IT AT YOUR OWN RISK.\nDO NOT USE IT TO FAKE REPORT!')
 #import some needed packages
 import requests
+from sys import argv
 #API
 login_p = 'https://cz.yoya.com/user_block/do?action=cz/h5/login&start=login&start=login&user_code=user_id&app_type=Android&action=cz/h5/login&user_pwd=user_pa&client_code=user_imei'
 base_p = 'https://jkjc.yoya.com/fzjdxx/do?action=tzjc/h5/gzbdreport&start=getPreviousReport&user_id=uu_id'
@@ -17,7 +18,11 @@ real_id = '000000000000000000'
 user_real_addr = 'Paradise'
 user_tel = '10010'
 user_back_time = 'How long will you survive?' 
-
+#argv
+if len(argv) == 4:
+    user_bl = argv[1]
+    user_id = argv[2]
+    user_pa = argv[3]
 #mixed
 user_f = login_p.replace('user_block',user_bl).replace('user_id',user_id).replace('user_pa',user_pa).replace('user_imei',user_im)
 #Start a session by using requests

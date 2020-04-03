@@ -5,14 +5,15 @@ import requests
 from sys import argv
 #API
 login_p = 'https://cz.yoya.com/user_block/do?action=cz/h5/login&start=login&start=login&user_code=user_id&app_type=Android&action=cz/h5/login&user_pwd=user_pa&client_code=user_imei'
-base_p = 'https://jkjc.yoya.com/fzjdxx/do?action=tzjc/h5/gzbdreport&start=getPreviousReport&user_id=uu_id'
-report_p = 'https://jkjc.yoya.com/fzjdxx/do?action=tzjc/h5/gzbdreport&start=saveReport'
+base_p = 'https://jkjc.yoya.com/user_block/do?action=tzjc/h5/gzbdreport&start=getPreviousReport&user_id=uu_id'
+report_p = 'https://jkjc.yoya.com/user_block/do?action=tzjc/h5/gzbdreport&start=saveReport'
 #Account
 user_bl = 'school'
 user_id = 'student_id'
 user_pa = '123456' #unencrypted password text is very stupid.
 user_im = 'Ive cracked you.\nQQ:1787074172'
 #These below could be auto saved by using APP.
+rtype = '1'
 user_id_type = '1'
 real_id = '000000000000000000'
 user_real_addr = 'Paradise'
@@ -24,6 +25,8 @@ if len(argv) == 4:
     user_id = argv[2]
     user_pa = argv[3]
 #mixed
+base_p = base_p.replace('user_block',user_bl)
+report_p = report_p.replace('user_block',user_bl)
 user_f = login_p.replace('user_block',user_bl).replace('user_id',user_id).replace('user_pa',user_pa).replace('user_imei',user_im)
 #Start a session by using requests
 s = requests.session()
@@ -59,7 +62,7 @@ if base_dict['data'] != 'None':
     user_tel = base_dict['telephone']
     user_back_time = base_dict['back_time']
 #mixed
-post_format = {'user_id':uu_id,'id_type':'1','identity_code':real_id,'address':user_real_addr,'telephone':user_tel,'back_time':user_back_time,'go_where':'None','contact_type':'1','es':'1','health_status':'2','is_diagnosis':'','is_fever':'0','temperature':'36','is_cough':'0','isolate':'0','isolate_type':'','isolate_time':'','remark':''}
+post_format = {'type':rtype,user_id':uu_id,'id_type':'1','identity_code':real_id,'address':user_real_addr,'telephone':user_tel,'back_time':user_back_time,'go_where':'None','contact_type':'1','es':'1','health_status':'2','is_diagnosis':'','is_fever':'0','temperature':'36','is_cough':'0','isolate':'0','isolate_type':'','isolate_time':'','remark':'AUTO_REP_19v'}
 #Finally post out
 result = s.post(report_p,data=post_format).json()
 print(result)
